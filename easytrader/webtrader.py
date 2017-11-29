@@ -146,6 +146,19 @@ class WebTrader(object):
 
     @property
     def position(self):
+        """
+        return data format:
+        [{'cost_price': '摊薄成本价',
+        'current_amount': '当前数量',
+        'enable_amount': '可卖数量',
+        'income_balance': '摊薄浮动盈亏',
+        'keep_cost_price': '保本价',
+        'last_price': '最新价',
+        'market_value': '证券市值',
+        'position_str': '定位串',
+        'c': '证券代码',
+        'stock_name': '证券名称'}]
+        """
         return self.get_position()
 
     def get_position(self):
@@ -255,3 +268,35 @@ class WebTrader(object):
 
     def check_login_status(self, return_data):
         pass
+
+    def buy(self, stock_code, price, amount=0, volume=0, entrust_prop=0):
+        """
+            买入目标数量的证券
+        """
+        pass
+
+    def sell(self, stock_code, price, amount=0, volume=0, entrust_prop=0):
+        """
+            卖出指令目标数量的证券
+        """
+        pass
+
+    def order_target_percent(self, stock_code, price, percent, entrust_prop=0):
+        """
+            买入指定目标比例的仓位
+        """
+        if percent==0:
+            # 卖出全部可卖证券
+            postions = self.user.position
+            for pos in positions:
+                if pos['stock_code']==stock_code:
+                    self.sell(stock_code,price,pos['enable_amount'])
+        elif percent>0:
+            current_balance = self.balance['current_balance']
+            asset_balance = self.balance['asset_balance']
+            amount = asset_balance * percent
+            if current_balance < amount:
+                amount = current_balance
+            share_num = amount // price // 100 * 100
+            # 买入证券
+            self.buy(stock_code,price,share_num)

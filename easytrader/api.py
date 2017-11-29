@@ -24,7 +24,7 @@ def use(broker, debug=True, **kwargs):
     """
     if not debug:
         log.setLevel(logging.INFO)
-    elif broker.lower() in ['xq', '雪球']:
+    if broker.lower() in ['xq', '雪球']:
         return XueQiuTrader(**kwargs)
     elif broker.lower() in ['gf', '广发']:
         return GFTrader(debug=debug)

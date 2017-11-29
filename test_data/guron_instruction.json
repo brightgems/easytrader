@@ -1,0 +1,91 @@
+{
+  "status": "ok",
+  "data": {
+    "count": 3,
+    "sheet_defn": {
+      "layout": {
+        "layout_type": "grid",
+        "grid": {
+          "column": [ [ "0.Status.0", "0.Price.0" ] ],
+          "row": [ "0.StockId.0", "0.StockName.0", "0.Industry.0" ]
+        }
+      }
+    },
+    "trade_date": "2017/07/14",
+    "msg": "\u672c\u6b21\u8c03\u4ed3\u6307\u4ee4\u6839\u636e\u9884\u5907\u8c03\u4ed3\u6307\u4ee4\u548c2017-07-13 15:05:03\u884c\u60c5\u6570\u636e\u751f\u6210",
+    "position": 1.0,
+    "sheet_data": {
+      "row_size": 4,
+      "col_size": 5,
+      "meas_data": [
+        [ "\u5168\u90e8\u5356\u51fa", "\u6301\u67091300\u80a1", "\u6301\u67094100\u80a1", "\u4e70\u51652500\u80a1" ],
+        [ 0, 0.33, 0.33, 0.33 ],
+        [ 27.16, 26.14, 8.12, 13.42 ]
+      ],
+      "col": [
+        {
+          "rng": [ "", "" ],
+          "fmt": "",
+          "type": "meas",
+          "id": "0.Status.0",
+          "name": "\u4fe1\u53f7"
+        },
+        {
+          "type": "meas",
+          "fmt": ".2%",
+          "rng": [ "", "" ],
+          "id": "0.Position.0",
+          "name": "\u76ee\u6807\u4ed3\u4f4d"
+        },
+        {
+          "type": "meas",
+          "fmt": ".2f",
+          "rng": [ "", "" ],
+          "id": "0.Price.0",
+          "name": "\u53c2\u8003\u4ef7"
+        }
+      ],
+      "row": [
+        {
+          "id": "0.StockId.0",
+          "type": "attr",
+          "data": [
+            [ 3390, 2498, 294, 452 ],
+            [ "603029", "600593", "000713", "000929" ]
+          ],
+          "d": {
+            "disp": 1,
+            "id": 0
+          },
+          "name": "\u80a1\u7968\u4ee3\u7801"
+        },
+        {
+          "id": "0.StockName.0",
+          "type": "attr",
+          "data": [
+            [ 2992, 2886, 1883, 2144 ],
+            [ "\u5929\u9e45\u80a1\u4efd", "\u5927\u8fde\u5723\u4e9a", "\u4e30\u4e50\u79cd\u4e1a", "\u5170\u5dde\u9ec4\u6cb3" ]
+          ],
+          "d": {
+            "disp": 1,
+            "id": 0
+          },
+          "name": "\u80a1\u7968\u540d"
+        },
+        {
+          "id": "0.Industry.0",
+          "type": "attr",
+          "data": [
+            [ 14, 1, 4, 27 ],
+            [ "\u673a\u68b0\u8bbe\u5907", "\u4f11\u95f2\u670d\u52a1", "\u519c\u6797\u7267\u6e14", "\u98df\u54c1\u996e\u6599" ]
+          ],
+          "d": {
+            "disp": 1,
+            "id": 0
+          },
+          "name": "\u884c\u4e1a"
+        }
+      ]
+    }
+  }
+}

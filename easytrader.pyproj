@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{482912be-b12b-4dd7-b101-2a6fa3372d3a}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>cli.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId>{78a4b93c-1013-41a9-a9c2-fdd132929b6b}</InterpreterId>
+    <InterpreterVersion>3.5</InterpreterVersion>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <CommandLineArguments>--use gf --prepare gf.json</CommandLineArguments>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="requirements.txt" />
+    <Content Include="test_data\guron_instruction.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="cli.py" />
+    <Compile Include="easytrader\api.py" />
+    <Compile Include="easytrader\clienttrader.py" />
+    <Compile Include="easytrader\config\__init__.py" />
+    <Compile Include="easytrader\exceptions.py" />
+    <Compile Include="easytrader\follower.py" />
+    <Compile Include="easytrader\gftrader.py" />
+    <Compile Include="easytrader\gj_clienttrader.py" />
+    <Compile Include="easytrader\helpers.py" />
+    <Compile Include="easytrader\ht_clienttrader.py" />
+    <Compile Include="easytrader\joinquant_follower.py" />
+    <Compile Include="easytrader\log.py" />
+    <Compile Include="easytrader\ricequant_follower.py" />
+    <Compile Include="easytrader\webtrader.py" />
+    <Compile Include="easytrader\xqtrader.py" />
+    <Compile Include="easytrader\xq_follower.py" />
+    <Compile Include="easytrader\yh_clienttrader.py" />
+    <Compile Include="easytrader\__init__.py" />
+    <Compile Include="httpserver.py" />
+    <Compile Include="setup.py" />
+    <Compile Include="test_easytrader.py" />
+    <Compile Include="test_gftrader_get_entrust.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="easytrader" />
+    <Folder Include="easytrader\config" />
+    <Folder Include="test_data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="{78a4b93c-1013-41a9-a9c2-fdd132929b6b}\3.5" />
+  </ItemGroup>
+  <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
+</Project>

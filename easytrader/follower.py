@@ -207,13 +207,13 @@ class BaseFollower(object):
                     break
 
                 # check amount
-                if trade_cmd['amount'] <= 0:
-                    log.warning(
-                        '策略 [{}] 指令(股票: {} 动作: {} 数量: {} 价格: {})超时，指令产生时间: {} 当前时间: {}, 买入股数无效 , 被丢弃'.format(
-                            trade_cmd['strategy_name'], trade_cmd['stock_code'], trade_cmd['action'],
-                            trade_cmd['amount'],
-                            trade_cmd['price'], trade_cmd['datetime'], now))
-                    break
+                #if not trade_cmd.get('percentage') and trade_cmd['amount'] <= 0:
+                #    log.warning(
+                #        '策略 [{}] 指令(股票: {} 动作: {} 数量: {} 价格: {})超时，指令产生时间: {} 当前时间: {}, 买入股数无效 , 被丢弃'.format(
+                #            trade_cmd['strategy_name'], trade_cmd['stock_code'], trade_cmd['action'],
+                #            trade_cmd['amount'],
+                #            trade_cmd['price'], trade_cmd['datetime'], now))
+                #    break
 
                 args = {
                     'stock_code': trade_cmd['stock_code'],

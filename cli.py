@@ -22,6 +22,7 @@ def main(prepare, use, do, get, params, debug):
         do = get
     if prepare is not None and use in ['ht', 'yjb', 'yh', 'gf', 'xq']:
         user = easytrader.use(use, debug)
+        
         user.prepare(prepare)
         with open(ACCOUNT_OBJECT_FILE, 'wb') as f:
             dill.dump(user, f)

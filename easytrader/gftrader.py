@@ -18,7 +18,7 @@ from .webtrader import WebTrader
 VERIFY_CODE_POS = 0
 TRADE_MARKET = 1
 SESSIONIDPOS = 32
-HOLDER_POS = 11
+HOLDER_POS = 14 # account info locate row no# in login response json
 SH = 0
 SZ = 1
 
@@ -154,17 +154,17 @@ class GFTrader(WebTrader):
         jsholder = re.findall(r'\[(.*)\]', jsholder)
         jsholder = eval(jsholder[0])
         for jsholder_sh in jsholder:
-            if jsholder_sh['exchange_name'] == '上海':
+            if jsholder_sh['exchange_type_dict'] == '上海':
                 self.holdername.append(jsholder_sh)
         for jsholder_sz in jsholder:
-            if jsholder_sz['exchange_name'] == '深圳':
+            if jsholder_sz['exchange_type_dict'] == '深圳':
                 self.holdername.append(jsholder_sz)
 
     def __get_trade_need_info(self, stock_code):
         """获取股票对应的证券市场和帐号"""
         # 获取股票对应的证券市场
-        exchange_type = self.holdername[SH]['exchange_type'] if helpers.get_stock_type(stock_code) == 'sh' \
-            else self.holdername[SZ]['exchange_type']
+        exchange_type = self.holdername[SH]['exchange_type_dict'] if helpers.get_stock_type(stock_code) == 'sh' \
+            else self.holdername[SZ]['exchange_type_dict']
         # 获取股票对应的证券帐号
         stock_account = self.holdername[SH]['stock_account'] if exchange_type == '1' \
             else self.holdername[SZ]['stock_account']
@@ -403,7 +403,7 @@ class GFTrader(WebTrader):
         trade_param = dict(
             other,
             stock_account=need_info['stock_account'],
-            exchange_type=need_info['exchange_type'],
+            exchange_type=need_info['exchange_type_dict'],
             stock_code=stock_code[-6:],
             entrust_price=price,
             dse_sessionId=self.sessionid
@@ -429,7 +429,7 @@ class GFTrader(WebTrader):
         exchange_info = self.__get_trade_need_info(stockcode)
         params = dict(
             self.config['queryStockInfo'],
-            exchange_type=exchange_info['exchange_type'],
+            exchange_type=exchange_info['exchange_type_dict'],
             stock_code=stockcode
         )
         request_params = self.create_basic_params()
